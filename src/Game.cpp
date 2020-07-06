@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game():_isRunning(false){};
+Game::Game():_isRunning(false), _entityManager(new EntityManager()){};
 SDL_Renderer* Game::_renderer;
 
 bool Game::IsRunning() const{
@@ -62,6 +62,7 @@ void Game::ProcessInput(){
 }
 
 void Game::Update(){
+  _entityManager->Update();
 
 }
 
@@ -69,9 +70,12 @@ void Game::Render(){
   SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
   SDL_RenderClear(_renderer);
   SDL_RenderPresent(_renderer);
+
+  _entityManager->Render();
 }
 
 void Game::Destroy(){
+  delete _entityManager;
   SDL_DestroyRenderer(_renderer);
   SDL_DestroyWindow(_window);
   SDL_Quit();

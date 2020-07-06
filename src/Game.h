@@ -2,12 +2,14 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
+#include "EntityManager.h"
 
 class Game {
   private:
     bool _isRunning;
-    SDL_Window *_window;
-    static SDL_Renderer *_renderer;
+    SDL_Window* _window;
+    static SDL_Renderer* _renderer;
+    EntityManager* _entityManager;
 
   public:
     Game();
