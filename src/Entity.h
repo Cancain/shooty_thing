@@ -16,7 +16,8 @@ class Entity{
   public:
     Entity(const int height, const int width, const Cordinate position);
     void Spawn(SDL_Renderer* renderer);
-
+    void Update();
+    void Render();
 };
 
 #endif
