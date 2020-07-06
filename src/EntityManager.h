@@ -8,8 +8,10 @@
 class EntityManager{
   private:
     std::vector<Entity*> _entities;
+    SDL_Renderer* _renderer;
 
   public:
+    EntityManager(SDL_Renderer* renderer);
     void Update();
     void Render();
     bool HasNoEntities() const;

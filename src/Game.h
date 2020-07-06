@@ -13,7 +13,7 @@ class Game {
     float _deltaTime;
     int _ticksLastFrame;
     void _updateDeltaTime();
-    void _waitForTargetFramerate() const;
+    void _waitForTargetFramerate();
 
   public:
     Game();

@@ -1,4 +1,7 @@
 #include "EntityManager.h"
+#include <iostream>
+
+EntityManager::EntityManager(SDL_Renderer* renderer): _renderer(renderer) {}
 
 void EntityManager::Update(){
   for (Entity* entity : _entities){
@@ -8,7 +11,7 @@ void EntityManager::Update(){
 
 void EntityManager::Render(){
   for (Entity* entity : _entities){
-    entity->Render();
+    entity->Render(_renderer);
   }
 }
 
@@ -18,8 +21,8 @@ bool EntityManager::HasNoEntities() const {
 
 Entity& EntityManager::AddEntity(const std::string entityName, const int width, const int height){
   Cordinate position = {
-    0,
-    0
+    400,
+    300
   };
   Entity* entity = new Entity(entityName, height, width, position);
   _entities.push_back(entity);

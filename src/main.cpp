@@ -1,9 +1,10 @@
 #include "Game.h"
+#include "Constants.h"
 
 int main(int argv, char* args[]){
   Game *game = new Game();
 
-  game->Initialize(800, 600);
+  game->Initialize(WIDTH, HEIGHT);
   while(game->IsRunning()){
     game->ProcessInput();
     game->Update();

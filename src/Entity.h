@@ -11,7 +11,6 @@ struct Cordinate{
 
 class Entity{
   private:
-    Cordinate _position;
     SDL_Rect _body;
     std::string _name;
 
@@ -19,7 +18,7 @@ class Entity{
     Entity(const std::string name, const int height, const int width, const Cordinate position);
     void Spawn(SDL_Renderer* renderer);
     void Update();
-    void Render();
+    void Render(SDL_Renderer* renderer);
 };
 
 #endif

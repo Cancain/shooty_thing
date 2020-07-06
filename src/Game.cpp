@@ -1,7 +1,9 @@
+#include <iostream>
 #include "Game.h"
+#include "Constants.h"
 
-Game::Game():_isRunning(false), _entityManager(new EntityManager()){};
 SDL_Renderer* Game::_renderer;
+Game::Game():_isRunning(false), _entityManager(new EntityManager(_renderer)){};
 
 bool Game::IsRunning() const{
   return _isRunning;
@@ -45,6 +47,9 @@ void Game::Initialize(const int width, const int height){
   _window = createWindow(800, 600);
   _renderer = createRenderer(_window);
 
+  //Test entity... REMOVE
+  _entityManager->AddEntity("Test", 20, 20);
+
   _isRunning = true;
 }
 
@@ -61,10 +66,11 @@ void Game::ProcessInput(){
   }
 }
 
-void Game::_waitForTargetFramerate() const {
-  int timeToWait = 60 - (SDL_GetTicks() - _ticksLastFrame);
-  
-  if(timeToWait > 0 && timeToWait <= 60){
+void Game::_waitForTargetFramerate(){
+  const unsigned int FRAME_TARGET_TIME = 1000 / 60;
+  int timeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - _ticksLastFrame);
+
+  if(timeToWait > 0 && timeToWait <= FRAME_TARGET_TIME){
     SDL_Delay(timeToWait);
   }
 }
@@ -85,9 +91,9 @@ void Game::Update(){
 void Game::Render(){
   SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
   SDL_RenderClear(_renderer);
+  _entityManager->Render();
   SDL_RenderPresent(_renderer);
 
-  _entityManager->Render();
 }
 
 void Game::Destroy(){
