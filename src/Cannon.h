@@ -1,6 +1,10 @@
 #ifndef CANNON_H
 #define CANNON_H
 
-class cannon{};
+#include "Entity.h"
+
+class cannon : Entity {
+
+};
 
 #endif

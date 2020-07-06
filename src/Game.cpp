@@ -61,7 +61,23 @@ void Game::ProcessInput(){
   }
 }
 
+void Game::_waitForTargetFramerate() const {
+  int timeToWait = 60 - (SDL_GetTicks() - _ticksLastFrame);
+  
+  if(timeToWait > 0 && timeToWait <= 60){
+    SDL_Delay(timeToWait);
+  }
+}
+
+void Game::_updateDeltaTime(){
+  _deltaTime = (SDL_GetTicks() - _ticksLastFrame) / 1000.0f;
+  _ticksLastFrame = SDL_GetTicks();
+  _deltaTime = _deltaTime > 0.05f ? 0.05f : _deltaTime;
+}
+
 void Game::Update(){
+  _waitForTargetFramerate();
+  _updateDeltaTime();
   _entityManager->Update();
 
 }

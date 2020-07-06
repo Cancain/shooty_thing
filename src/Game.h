@@ -10,6 +10,10 @@ class Game {
     SDL_Window* _window;
     static SDL_Renderer* _renderer;
     EntityManager* _entityManager;
+    float _deltaTime;
+    int _ticksLastFrame;
+    void _updateDeltaTime();
+    void _waitForTargetFramerate() const;
 
   public:
     Game();
