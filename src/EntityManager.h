@@ -7,13 +7,13 @@
 
 class EntityManager{
   private:
-    std::vector<Entity*> entities;
+    std::vector<Entity*> _entities;
 
   public:
     void Update();
     void Render();
     bool HasNoEntities() const;
-    Entity& AddEntity(const std::string entityName);
+    Entity& AddEntity(const std::string entityName, const int width, const int height);
     std::vector<Entity*> GetEntities() const;
     unsigned int GetEntityCount() const;
 };

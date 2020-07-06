@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(const int height, const int width, const Cordinate position): _position(position){
+Entity::Entity(const std::string name, const int height, const int width, const Cordinate position): _name(name), _position(position){
   _body = {
     position.x,
     position.y,
