@@ -4,7 +4,7 @@
 #include "Entity.h"
 class Ball : public Entity {
   private:
-    float _velocity;
+    Cordinate _velocity;
   public:
     Ball(
         const std::string name = "Ball",

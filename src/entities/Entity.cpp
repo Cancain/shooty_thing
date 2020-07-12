@@ -9,12 +9,13 @@ Entity::Entity(const std::string name, const int height, const int width, const 
   };
 }
 
+#include <iostream>
 bool Entity::_isOutOfBounds(const Cordinate pos){
   unsigned int x = pos.x;
   unsigned int y = pos.y;
   const bool XOob = x <= 0 || x >= WIDTH - _body.w;
   const bool YOob = y <= 0 || y >= HEIGHT - _body.h;
-  return XOob && YOob;
+  return XOob || YOob;
 }
 
 void Entity::Render(SDL_Renderer* renderer){
@@ -22,3 +23,9 @@ void Entity::Render(SDL_Renderer* renderer){
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
+Cordinate Entity::GetPosition() const {
+  return {
+    _body.x,
+    _body.y
+  };
+}

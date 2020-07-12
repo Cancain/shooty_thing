@@ -16,7 +16,7 @@ class Entity{
 
   protected:
     SDL_Rect _body;
-    bool _isOutOfBounds(const Cordinate pos);
+    bool _isOutOfBounds(Cordinate pos);
 
   public:
     Entity(
@@ -28,6 +28,7 @@ class Entity{
     void Render(SDL_Renderer* renderer);
     void Update();
     void HandleInput(const SDL_Event& event);
+    Cordinate GetPosition() const;
 };
 
 #endif

@@ -15,7 +15,7 @@ class Cannon : public Entity {
         const int width = DEFAULT_CANNON_WIDTH,
         const Cordinate position = {
         WIDTH / 2 - DEFAULT_CANNON_WIDTH,
-        HEIGHT - DEFAULT_CANNON_HEIGHT
+        (HEIGHT - DEFAULT_CANNON_HEIGHT) - 10
         });
     void HandleInput(const SDL_Keycode key);
     void Render(SDL_Renderer* renderer);
