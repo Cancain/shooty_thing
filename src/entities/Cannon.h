@@ -20,7 +20,7 @@ class Cannon : public Entity {
         }): 
       Entity(name, height, width, position){
     }
-    void HandleInput(char key);
+    void HandleInput(const char key);
     void Render(SDL_Renderer* renderer);
     void Update();
 };

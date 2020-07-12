@@ -66,7 +66,11 @@ void Game::ProcessInput(){
   SDL_Event event;
   SDL_PollEvent(&event);
 
-  char key = event.key.keysym.sym;
+  if(event.type == SDL_QUIT){
+    _isRunning = false;
+  }
+
+  const char key = event.key.keysym.sym;
 
   switch(event.type){
     case SDL_QUIT:

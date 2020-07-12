@@ -1,8 +1,8 @@
 #include "Cannon.h"
 #include <iostream>
 
-void Cannon::HandleInput (char key) {
-  std::cout << key << std::endl;
+void Cannon::HandleInput (const char key) {
+  /* std::cout << key << std::endl; */
 }
 
 void Cannon::Render(SDL_Renderer* renderer){
