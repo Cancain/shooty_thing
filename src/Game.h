@@ -5,6 +5,7 @@
 #include "entities/Cannon.h"
 
 class EntityManager;
+class InputManager;
 
 class Game {
   private:
@@ -19,12 +20,14 @@ class Game {
   public:
     Game();
     static SDL_Renderer* Renderer;
+    InputManager* Input;
     bool IsRunning() const;
     void Initialize(const int width, const int height);
     void Update();
     void Render();
     void ProcessInput();
     void Destroy();
+    void Quit();
 };
 
 #endif

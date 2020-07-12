@@ -5,9 +5,7 @@
 
 SDL_Renderer* Game::Renderer;
 
-Game::Game():_isRunning(false){
-  _cannon = new Cannon();
-};
+Game::Game():_isRunning(false){};
 
 bool Game::IsRunning() const{
   return _isRunning;
@@ -50,21 +48,9 @@ void Game::Initialize(const int width, const int height){
 
   _window = createWindow(800, 600);
   Renderer = createRenderer(_window);
+  _cannon = new Cannon();
 
   _isRunning = true;
-}
-
-void Game::ProcessInput(){
-  SDL_Event event;
-  SDL_PollEvent(&event);
-
-  switch(event.type) {
-    case SDL_QUIT:
-      _isRunning = false;
-      break;
-    default:
-      break;
-  }
 }
 
 void Game::_waitForTargetFramerate(){
@@ -76,6 +62,25 @@ void Game::_waitForTargetFramerate(){
   }
 }
 
+void Game::ProcessInput(){
+  SDL_Event event;
+  SDL_PollEvent(&event);
+
+  char key = event.key.keysym.sym;
+
+  switch(event.type){
+    case SDL_QUIT:
+        _isRunning = false;
+      break;
+    default:
+      break;
+  }
+
+  if(key){
+    _cannon->HandleInput(key);
+  } 
+}
+
 void Game::_updateDeltaTime(){
   _deltaTime = (SDL_GetTicks() - _ticksLastFrame) / 1000.0f;
   _ticksLastFrame = SDL_GetTicks();
@@ -85,7 +90,10 @@ void Game::_updateDeltaTime(){
 void Game::Update(){
   _waitForTargetFramerate();
   _updateDeltaTime();
+}
 
+void Game::Quit(){
+  _isRunning = false;
 }
 
 void Game::Render(){
