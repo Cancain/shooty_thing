@@ -1,7 +1,7 @@
 #ifndef CANNON_H
 #define CANNON_H
 
-#include "../Entity.h"
+#include "Entity.h"
 #include "../Constants.h"
 
 #include <iostream>
@@ -9,7 +9,6 @@
 class Cannon : public Entity {
   private: 
     float _velocity;
-    bool _isOutOfBounds(int pos);
 
    public: 
     Cannon(

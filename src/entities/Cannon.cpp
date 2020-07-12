@@ -11,23 +11,24 @@ Cannon::Cannon(
   _velocity(DEFAULT_CANNON_VELOCITY)
   {};
 
-bool Cannon::_isOutOfBounds(int pos){
-  return _body.x <= 0 || _body.x >= WIDTH;
-};
-
 void Cannon::HandleInput(const SDL_Keycode key) {
-  std::cout << _body.x << std::endl;
+  Cordinate newPosition = {
+    _body.x,
+    _body.y
+  };
+
   if(key == SDLK_RIGHT){
-    int newPosition = _body.x += _velocity;
+    newPosition.x += _velocity;
     _body.x = _isOutOfBounds(newPosition) ? 
       WIDTH - DEFAULT_CANNON_WIDTH : 
-      newPosition;
+      newPosition.x;
   }
+
   if(key == SDLK_LEFT){
-    int newPosition = _body.x -= _velocity;
+    newPosition.x -= _velocity;
     _body.x = _isOutOfBounds(newPosition) ? 
       0 : 
-      newPosition;
+      newPosition.x;
   }
 }
 

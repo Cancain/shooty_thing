@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <string>
+#include "../Constants.h"
 
 struct Cordinate{
   int x;
@@ -15,6 +16,7 @@ class Entity{
 
   protected:
     SDL_Rect _body;
+    bool _isOutOfBounds(const Cordinate pos);
 
   public:
     Entity(
