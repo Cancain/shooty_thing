@@ -4,8 +4,6 @@
 #include "Entity.h"
 #include "../Constants.h"
 
-#include <iostream>
-
 class Cannon : public Entity {
   private: 
     float _velocity;

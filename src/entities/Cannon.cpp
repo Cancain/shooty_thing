@@ -1,5 +1,4 @@
 #include "Cannon.h"
-#include <iostream>
 
 Cannon::Cannon(
         const std::string name,

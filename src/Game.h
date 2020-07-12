@@ -3,9 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "entities/Cannon.h"
-
-class EntityManager;
-class InputManager;
+#include "entities/Ball.h"
 
 class Game {
   private:
@@ -16,11 +14,11 @@ class Game {
     void _updateDeltaTime();
     void _waitForTargetFramerate();
     Cannon* _cannon;
+    Ball* _ball;
 
   public:
     Game();
     static SDL_Renderer* Renderer;
-    InputManager* Input;
     bool IsRunning() const;
     void Initialize(const int width, const int height);
     void Update();

@@ -1,7 +1,5 @@
-#include <iostream>
 #include "Game.h"
 #include "Constants.h"
-#include "./entities/Cannon.h"
 
 SDL_Renderer* Game::Renderer;
 
@@ -49,6 +47,7 @@ void Game::Initialize(const int width, const int height){
   _window = createWindow(800, 600);
   Renderer = createRenderer(_window);
   _cannon = new Cannon();
+  _ball = new Ball();
 
   _isRunning = true;
 }
@@ -96,6 +95,7 @@ void Game::Render(){
   SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
   SDL_RenderClear(Renderer);
   _cannon->Render(Renderer);
+  _ball->Render(Renderer);
   SDL_RenderPresent(Renderer);
 }
 
