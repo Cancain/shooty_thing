@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
-#include "EntityManager.h"
+#include "entities/Cannon.h"
 
 class EntityManager;
 
@@ -10,11 +10,11 @@ class Game {
   private:
     bool _isRunning;
     SDL_Window* _window;
-    EntityManager* _entityManager;
     float _deltaTime;
     int _ticksLastFrame;
     void _updateDeltaTime();
     void _waitForTargetFramerate();
+    Cannon* _cannon;
 
   public:
     Game();

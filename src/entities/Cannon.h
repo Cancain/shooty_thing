@@ -8,6 +8,7 @@
 
 class Cannon : public Entity {
   private: 
+
    public: 
     Cannon(
         const std::string name = "Cannon", 
@@ -20,6 +21,8 @@ class Cannon : public Entity {
       Entity(name, height, width, position){
     }
     void HandleInput(const SDL_Event& event);
+    void Render(SDL_Renderer* renderer);
+    void Update();
 };
 
 

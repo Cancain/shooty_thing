@@ -6,7 +6,7 @@
 SDL_Renderer* Game::Renderer;
 
 Game::Game():_isRunning(false){
-  _entityManager = new EntityManager;
+  _cannon = new Cannon();
 };
 
 bool Game::IsRunning() const{
@@ -51,16 +51,12 @@ void Game::Initialize(const int width, const int height){
   _window = createWindow(800, 600);
   Renderer = createRenderer(_window);
 
-  Cannon* cannon = new Cannon();
-  _entityManager->AddEntity(cannon);
-
   _isRunning = true;
 }
 
 void Game::ProcessInput(){
   SDL_Event event;
   SDL_PollEvent(&event);
-  _entityManager->HandleInput(event);
 
   switch(event.type) {
     case SDL_QUIT:
@@ -89,20 +85,17 @@ void Game::_updateDeltaTime(){
 void Game::Update(){
   _waitForTargetFramerate();
   _updateDeltaTime();
-  _entityManager->Update();
 
 }
 
 void Game::Render(){
   SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
   SDL_RenderClear(Renderer);
-  _entityManager->Render();
+  _cannon->Render(Renderer);
   SDL_RenderPresent(Renderer);
-
 }
 
 void Game::Destroy(){
-  delete _entityManager;
   SDL_DestroyRenderer(Renderer);
   SDL_DestroyWindow(_window);
   SDL_Quit();

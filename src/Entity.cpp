@@ -17,7 +17,8 @@ void Entity::HandleInput(const SDL_Event& event){
 void Entity::Update(){}
 
 void Entity::Render(SDL_Renderer* renderer){
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
   SDL_RenderFillRect(renderer, &_body);
+
+  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 

@@ -4,6 +4,7 @@ OUTFILE=${OUTFOLDER}/main
 build:
 	g++ -Wall -std=c++17 -g -Wfatal-errors \
 	./src/*.cpp \
+	./src/entities/*.cpp \
 	-o ${OUTFILE} \
 	-lSDL2;
 
