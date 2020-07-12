@@ -8,6 +8,8 @@
 
 class Cannon : public Entity {
   private: 
+    float _velocity;
+    bool _isOutOfBounds(int pos);
 
    public: 
     Cannon(
@@ -17,12 +19,12 @@ class Cannon : public Entity {
         const Cordinate position = {
         WIDTH / 2 - DEFAULT_CANNON_WIDTH,
         HEIGHT - DEFAULT_CANNON_HEIGHT
-        }): 
-      Entity(name, height, width, position){
-    }
-    void HandleInput(const char key);
+        });
+    void HandleInput(const SDL_Keycode key);
     void Render(SDL_Renderer* renderer);
     void Update();
+    void SetVelocity(const float velocity);
+    float GetVelocity() const;
 };
 
 

@@ -70,15 +70,7 @@ void Game::ProcessInput(){
     _isRunning = false;
   }
 
-  const char key = event.key.keysym.sym;
-
-  switch(event.type){
-    case SDL_QUIT:
-        _isRunning = false;
-      break;
-    default:
-      break;
-  }
+  const SDL_Keycode key = event.key.keysym.sym;
 
   if(key){
     _cannon->HandleInput(key);
