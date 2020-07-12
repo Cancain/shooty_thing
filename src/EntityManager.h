@@ -14,7 +14,7 @@ class EntityManager{
     void Update();
     void Render();
     bool HasNoEntities() const;
-    Entity& AddEntity(const std::string entityName, const int width, const int height);
+    Entity& AddEntity(Entity* entity);
     std::vector<Entity*> GetEntities() const;
     unsigned int GetEntityCount() const;
 };

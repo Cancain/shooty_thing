@@ -17,12 +17,12 @@ bool EntityManager::HasNoEntities() const {
   return _entities.size() <= 0;
 }
 
-Entity& EntityManager::AddEntity(const std::string entityName, const int width, const int height){
-  Cordinate position = {
-    400,
-    300
-  };
-  Entity* entity = new Entity(entityName, height, width, position);
+Entity& EntityManager::AddEntity(Entity* entity){
+  /* Cordinate position = { */
+  /*   400, */
+  /*   300 */
+  /* }; */
+  /* Entity* entity = new Entity(entityName, height, width, position); */
   _entities.push_back(entity);
   return *entity;
 }

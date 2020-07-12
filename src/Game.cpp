@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Game.h"
 #include "Constants.h"
+#include "./entities/Cannon.h"
 
 SDL_Renderer* Game::Renderer;
 
@@ -51,7 +52,12 @@ void Game::Initialize(const int width, const int height){
   Renderer = createRenderer(_window);
 
   //Test entity... REMOVE
-  _entityManager->AddEntity("Test", 20, 20);
+  Cordinate position = {
+    20,
+    20,
+  };
+  Cannon* cannon = new Cannon();
+  _entityManager->AddEntity(cannon);
 
   _isRunning = true;
 }

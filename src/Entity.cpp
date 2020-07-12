@@ -4,8 +4,8 @@ Entity::Entity(const std::string name, const int height, const int width, const 
   _body = {
     position.x,
     position.y,
+    width,
     height,
-    width
   };
 }
 
@@ -18,7 +18,3 @@ void Entity::Render(SDL_Renderer* renderer){
   SDL_RenderFillRect(renderer, &_body);
 }
 
-void Entity::Spawn(SDL_Renderer* renderer){
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-  SDL_RenderFillRect(renderer, &_body);
-}
