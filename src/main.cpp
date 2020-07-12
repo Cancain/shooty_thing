@@ -11,6 +11,6 @@ int main(int argv, char* args[]){
     game->Render();
   }
 
-  game->Destroy();
+  delete game;
   return 0;
 }

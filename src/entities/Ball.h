@@ -3,6 +3,8 @@
 
 #include "Entity.h"
 class Ball : public Entity {
+  private:
+    float _velocity;
   public:
     Ball(
         const std::string name = "Ball",
@@ -13,7 +15,10 @@ class Ball : public Entity {
         200
         }
     );
+    float GetVelocity() const;
+    void SetVelocity(const float velocity);
     void Render(SDL_Renderer* renderer);
+    void Update();
 };
 
 #endif

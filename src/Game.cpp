@@ -85,10 +85,7 @@ void Game::_updateDeltaTime(){
 void Game::Update(){
   _waitForTargetFramerate();
   _updateDeltaTime();
-}
-
-void Game::Quit(){
-  _isRunning = false;
+  _ball->Update();
 }
 
 void Game::Render(){
@@ -99,7 +96,9 @@ void Game::Render(){
   SDL_RenderPresent(Renderer);
 }
 
-void Game::Destroy(){
+Game::~Game(){
+  delete _cannon;
+  delete _ball;
   SDL_DestroyRenderer(Renderer);
   SDL_DestroyWindow(_window);
   SDL_Quit();

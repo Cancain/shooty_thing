@@ -18,13 +18,13 @@ class Game {
 
   public:
     Game();
+    ~Game();
     static SDL_Renderer* Renderer;
     bool IsRunning() const;
     void Initialize(const int width, const int height);
     void Update();
     void Render();
     void ProcessInput();
-    void Destroy();
     void Quit();
 };
 
