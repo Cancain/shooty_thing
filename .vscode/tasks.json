@@ -9,7 +9,8 @@
                 "-g",
                 "${workspaceFolder}/src/*.cpp",
                 "-o",
-                "${fileDirname}/../bin/${fileBasenameNoExtension}"
+                "${fileDirname}/../bin/${fileBasenameNoExtension}",
+                "-lSDL2"
             ],
             "options": {
                 "cwd": "/usr/bin"

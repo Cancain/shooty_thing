@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include <iostream>
 
 Entity::Entity(const std::string name, const int height, const int width, const Cordinate position): _name(name){
   _body = {
@@ -9,9 +10,11 @@ Entity::Entity(const std::string name, const int height, const int width, const 
   };
 }
 
-void Entity::Update(){
-
+void Entity::HandleInput(const SDL_Event& event){
+  std::cout << "in entity" << std::endl;
 }
+
+void Entity::Update(){}
 
 void Entity::Render(SDL_Renderer* renderer){
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);

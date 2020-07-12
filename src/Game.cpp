@@ -60,6 +60,7 @@ void Game::Initialize(const int width, const int height){
 void Game::ProcessInput(){
   SDL_Event event;
   SDL_PollEvent(&event);
+  _entityManager->HandleInput(event);
 
   switch(event.type) {
     case SDL_QUIT:

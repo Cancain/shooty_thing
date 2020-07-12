@@ -13,6 +13,12 @@ void EntityManager::Render(){
   }
 }
 
+void EntityManager::HandleInput(const SDL_Event &event){
+  for (Entity* entity: _entities){
+    entity->HandleInput(event);
+  }
+}
+
 bool EntityManager::HasNoEntities() const {
   return _entities.size() <= 0;
 }

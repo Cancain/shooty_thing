@@ -23,8 +23,9 @@ class Entity{
         const int width, 
         const Cordinate position
         );
-    void Update();
     void Render(SDL_Renderer* renderer);
+    void Update();
+    void HandleInput(const SDL_Event& event);
 };
 
 #endif

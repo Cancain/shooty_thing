@@ -4,10 +4,10 @@
 #include "../Entity.h"
 #include "../Constants.h"
 
+#include <iostream>
 
 class Cannon : public Entity {
   private: 
-  using Entity::Entity;
    public: 
     Cannon(
         const std::string name = "Cannon", 
@@ -19,6 +19,7 @@ class Cannon : public Entity {
         }): 
       Entity(name, height, width, position){
     }
+    void HandleInput(const SDL_Event& event);
 };
 
 
