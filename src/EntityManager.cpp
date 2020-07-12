@@ -17,14 +17,8 @@ bool EntityManager::HasNoEntities() const {
   return _entities.size() <= 0;
 }
 
-Entity& EntityManager::AddEntity(Entity* entity){
-  /* Cordinate position = { */
-  /*   400, */
-  /*   300 */
-  /* }; */
-  /* Entity* entity = new Entity(entityName, height, width, position); */
+void EntityManager::AddEntity(Entity* entity){
   _entities.push_back(entity);
-  return *entity;
 }
 
 std::vector<Entity*> EntityManager::GetEntities() const {

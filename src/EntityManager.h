@@ -13,8 +13,9 @@ class EntityManager{
   public:
     void Update();
     void Render();
+    void HandleInput(const SDL_Event& event);
     bool HasNoEntities() const;
-    Entity& AddEntity(Entity* entity);
+    void AddEntity(Entity* entity);
     std::vector<Entity*> GetEntities() const;
     unsigned int GetEntityCount() const;
 };

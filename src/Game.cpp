@@ -51,11 +51,6 @@ void Game::Initialize(const int width, const int height){
   _window = createWindow(800, 600);
   Renderer = createRenderer(_window);
 
-  //Test entity... REMOVE
-  Cordinate position = {
-    20,
-    20,
-  };
   Cannon* cannon = new Cannon();
   _entityManager->AddEntity(cannon);
 
