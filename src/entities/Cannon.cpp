@@ -20,7 +20,7 @@ void Cannon::HandleInput(const SDL_Keycode key) {
   if(key == SDLK_RIGHT){
     newPosition.x += _velocity;
     _body.x = _isOutOfBounds(newPosition) ? 
-      WIDTH - DEFAULT_CANNON_WIDTH : 
+      WIDTH - _body.w : 
       newPosition.x;
   }
 

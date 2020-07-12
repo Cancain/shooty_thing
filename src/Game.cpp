@@ -55,7 +55,7 @@ void Game::Initialize(const int width, const int height){
 
 void Game::_waitForTargetFramerate(){
   const unsigned int FRAME_TARGET_TIME = 1000 / 60;
-  int timeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - _ticksLastFrame);
+  unsigned int timeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - _ticksLastFrame);
 
   if(timeToWait > 0 && timeToWait <= FRAME_TARGET_TIME){
     SDL_Delay(timeToWait);

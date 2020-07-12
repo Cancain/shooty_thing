@@ -11,8 +11,10 @@ Entity::Entity(const std::string name, const int height, const int width, const 
 }
 
 bool Entity::_isOutOfBounds(const Cordinate pos){
-  const bool XOob = pos.x <= 0 || pos.x >= WIDTH - _body.w;
-  const bool YOob = pos.y <= 0 || pos.y >= HEIGHT - _body.h;
+  unsigned int x = pos.x;
+  unsigned int y = pos.y;
+  const bool XOob = x <= 0 || x >= WIDTH - _body.w;
+  const bool YOob = y <= 0 || y >= HEIGHT - _body.h;
   return XOob && YOob;
 }
 
