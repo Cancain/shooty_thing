@@ -2,8 +2,11 @@
 #include "Game.h"
 #include "Constants.h"
 
-SDL_Renderer* Game::_renderer;
-Game::Game():_isRunning(false), _entityManager(new EntityManager(_renderer)){};
+SDL_Renderer* Game::Renderer;
+
+Game::Game():_isRunning(false){
+  _entityManager = new EntityManager;
+};
 
 bool Game::IsRunning() const{
   return _isRunning;
@@ -45,7 +48,7 @@ void Game::Initialize(const int width, const int height){
   }
 
   _window = createWindow(800, 600);
-  _renderer = createRenderer(_window);
+  Renderer = createRenderer(_window);
 
   //Test entity... REMOVE
   _entityManager->AddEntity("Test", 20, 20);
@@ -89,16 +92,16 @@ void Game::Update(){
 }
 
 void Game::Render(){
-  SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
-  SDL_RenderClear(_renderer);
+  SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 255);
+  SDL_RenderClear(Renderer);
   _entityManager->Render();
-  SDL_RenderPresent(_renderer);
+  SDL_RenderPresent(Renderer);
 
 }
 
 void Game::Destroy(){
   delete _entityManager;
-  SDL_DestroyRenderer(_renderer);
+  SDL_DestroyRenderer(Renderer);
   SDL_DestroyWindow(_window);
   SDL_Quit();
 }

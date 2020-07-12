@@ -4,11 +4,12 @@
 #include <SDL2/SDL.h>
 #include "EntityManager.h"
 
+class EntityManager;
+
 class Game {
   private:
     bool _isRunning;
     SDL_Window* _window;
-    static SDL_Renderer* _renderer;
     EntityManager* _entityManager;
     float _deltaTime;
     int _ticksLastFrame;
@@ -17,6 +18,7 @@ class Game {
 
   public:
     Game();
+    static SDL_Renderer* Renderer;
     bool IsRunning() const;
     void Initialize(const int width, const int height);
     void Update();

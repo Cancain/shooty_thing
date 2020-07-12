@@ -1,8 +1,6 @@
 #include "EntityManager.h"
 #include <iostream>
 
-EntityManager::EntityManager(SDL_Renderer* renderer): _renderer(renderer) {}
-
 void EntityManager::Update(){
   for (Entity* entity : _entities){
     entity->Update();
@@ -11,7 +9,7 @@ void EntityManager::Update(){
 
 void EntityManager::Render(){
   for (Entity* entity : _entities){
-    entity->Render(_renderer);
+    entity->Render(Game::Renderer);
   }
 }
 
