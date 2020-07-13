@@ -13,6 +13,7 @@ class Ball : public Entity {
     bool _isHeld;
     void _updatePosition();
     void _serve();
+    bool _cannonCollision();
 
   public:
     Ball(
@@ -33,6 +34,8 @@ class Ball : public Entity {
     void SetCannon(Cannon* cannon);
     void SetIsHeld(bool isHeld);
     bool GetIsHeld();
+    Cordinate GetPosition();
+    
 };
 
 #endif

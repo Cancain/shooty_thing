@@ -16,6 +16,9 @@ void Ball::Render(SDL_Renderer *renderer){
   SDL_RenderFillRect(renderer, &_body);
 }
 
+Cordinate Ball::GetPosition(){
+  return {_body.x, _body.y};
+}
 
 float reverse(const float num){
   if(num == 0){
@@ -34,15 +37,29 @@ void Ball::HandleInput(const SDL_Keycode key){
    }
 }
 
-void Ball::_updatePosition(){
-  Cordinate pos = {_body.x, _body.y};
-  const Bounds bound = _hasReachedBounds(pos);
-  if(bound == top || bound == bottom){
-    _velocity.y = reverse(_velocity.y);
-  }
+bool Ball::_cannonCollision(){
+  Cordinate pos = GetPosition();
 
-  if(bound == right || bound == left){
-    _velocity.x = reverse(_velocity.x);
+  if(pos.y >= _cannon->GetPosition().y - (_cannon->GetSize().y / 4)){
+    _velocity.y = -5;
+    return true;
+  }
+  return false;
+}
+
+void Ball::_updatePosition(){
+  if(!_cannonCollision()){
+    Cordinate pos = GetPosition();
+
+    const Bounds bound = _hasReachedBounds(pos);
+
+    if(bound == top || bound == bottom){
+      _velocity.y = reverse(_velocity.y);
+    }
+
+    if(bound == right || bound == left){
+      _velocity.x = reverse(_velocity.x);
+    }
   }
 
   _body.x += _velocity.x;
