@@ -6,7 +6,9 @@ Ball::Ball(
     const int height,
     const int width,
     const Cordinate position
-    ): Entity(name, height, width, position), _velocity({5, 5}){}
+    ): 
+  Entity(name, height, width, position), 
+  _velocity({5, 5}){}
 
 void Ball::Render(SDL_Renderer *renderer){
   SDL_SetRenderDrawColor(renderer, 25, 124, 241, 255);
@@ -24,9 +26,10 @@ float reverse(const float num){
   }
 }
 
+#include <iostream>
 void Ball::Update(){
   Cordinate pos = {_body.x, _body.y};
-
+  std::cout << _cannon->GetPosition().x << std::endl;
   const Bounds bound = _hasReachedBounds(pos);
   if(bound == top || bound == bottom){
     _velocity.y = reverse(_velocity.y);

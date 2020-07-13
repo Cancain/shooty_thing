@@ -2,9 +2,14 @@
 #define BALL_H
 
 #include "Entity.h"
+#include "Cannon.h"
+
+class Cannon;
+
 class Ball : public Entity {
   private:
     Cordinate _velocity;
+    Cannon* _cannon;
   public:
     Ball(
         const std::string name = "Ball",
@@ -15,10 +20,14 @@ class Ball : public Entity {
         200
         }
     );
+    Ball(Cannon* cannon);
     float GetVelocity() const;
     void SetVelocity(const float velocity);
     void Render(SDL_Renderer* renderer);
     void Update();
+    void SetCannon(Cannon* cannon){
+      _cannon = cannon;
+    }
 };
 
 #endif

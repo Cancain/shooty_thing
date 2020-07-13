@@ -10,7 +10,7 @@ bool Game::IsRunning() const{
 }
 
 SDL_Window* createWindow(const int width, const int height){
-  SDL_Window *window = SDL_CreateWindow(
+  SDL_Window* window = SDL_CreateWindow(
       "Shooty thing",
       SDL_WINDOWPOS_CENTERED,
       SDL_WINDOWPOS_CENTERED,
@@ -44,10 +44,11 @@ void Game::Initialize(const int width, const int height){
     return;
   }
 
-  _window = createWindow(800, 600);
+  _window = createWindow(width, height);
   Renderer = createRenderer(_window);
   _cannon = new Cannon();
   _ball = new Ball();
+  _ball->SetCannon(_cannon);
 
   _isRunning = true;
 }
@@ -70,7 +71,6 @@ void Game::ProcessInput(){
   }
 
   const SDL_Keycode key = event.key.keysym.sym;
-
   if(key){
     _cannon->HandleInput(key);
   } 
@@ -86,6 +86,7 @@ void Game::Update(){
   _waitForTargetFramerate();
   _updateDeltaTime();
   _ball->Update();
+  _cannon->Update();
 }
 
 void Game::Render(){

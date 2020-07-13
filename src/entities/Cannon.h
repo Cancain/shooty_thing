@@ -3,10 +3,14 @@
 
 #include "Entity.h"
 #include "../Constants.h"
+#include "Ball.h"
+
+class Ball;
 
 class Cannon : public Entity {
   private: 
     float _velocity;
+    Ball* _mainBall;
 
    public: 
     Cannon(
@@ -22,6 +26,9 @@ class Cannon : public Entity {
     void Update();
     void SetVelocity(const float velocity);
     float GetVelocity() const;
+    void SetMainBall(Ball* ball){
+      _mainBall = ball;
+    }
 };
 
 
