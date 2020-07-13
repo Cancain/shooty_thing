@@ -73,6 +73,7 @@ void Game::ProcessInput(){
   const SDL_Keycode key = event.key.keysym.sym;
   if(key){
     _cannon->HandleInput(key);
+    _ball->HandleInput(key);
   } 
 }
 

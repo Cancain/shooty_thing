@@ -30,6 +30,7 @@ class Cannon : public Entity {
     void SetMainBall(Ball* ball);
     void SetHoldsBall(bool holdsBall);
     bool GetHoldsBall();
+    Cordinate GetSize();
 };
 
 

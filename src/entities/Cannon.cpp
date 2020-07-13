@@ -52,9 +52,15 @@ float Cannon::GetVelocity()const {
 void Cannon::SetMainBall(Ball* ball){
   _mainBall = ball;
 }
+
 void Cannon::SetHoldsBall(bool holdsBall){
   _holdsBall = holdsBall;
 }
+
 bool Cannon::GetHoldsBall(){
   return _holdsBall;
+}
+
+Cordinate Cannon::GetSize(){
+  return {_body.w, _body.h};
 }
