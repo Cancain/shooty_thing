@@ -48,3 +48,13 @@ void Cannon::SetVelocity(const float velocity){
 float Cannon::GetVelocity()const {
   return _velocity;
 }
+
+void Cannon::SetMainBall(Ball* ball){
+  _mainBall = ball;
+}
+void Cannon::SetHoldsBall(bool holdsBall){
+  _holdsBall = holdsBall;
+}
+bool Cannon::GetHoldsBall(){
+  return _holdsBall;
+}

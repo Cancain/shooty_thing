@@ -10,6 +10,8 @@ class Ball : public Entity {
   private:
     Cordinate _velocity;
     Cannon* _cannon;
+    bool _isHeld;
+
   public:
     Ball(
         const std::string name = "Ball",
@@ -25,9 +27,9 @@ class Ball : public Entity {
     void SetVelocity(const float velocity);
     void Render(SDL_Renderer* renderer);
     void Update();
-    void SetCannon(Cannon* cannon){
-      _cannon = cannon;
-    }
+    void SetCannon(Cannon* cannon);
+    void SetIsHeld(bool isHeld);
+    bool GetIsHeld();
 };
 
 #endif

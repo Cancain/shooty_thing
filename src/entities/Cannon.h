@@ -11,6 +11,7 @@ class Cannon : public Entity {
   private: 
     float _velocity;
     Ball* _mainBall;
+    bool _holdsBall;
 
    public: 
     Cannon(
@@ -26,10 +27,11 @@ class Cannon : public Entity {
     void Update();
     void SetVelocity(const float velocity);
     float GetVelocity() const;
-    void SetMainBall(Ball* ball){
-      _mainBall = ball;
-    }
+    void SetMainBall(Ball* ball);
+    void SetHoldsBall(bool holdsBall);
+    bool GetHoldsBall();
 };
+
 
 
 #endif
