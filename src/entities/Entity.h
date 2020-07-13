@@ -10,13 +10,22 @@ struct Cordinate{
   int y;
 };
 
+enum Bounds {
+  top,
+  right,
+  bottom,
+  left,
+  none
+};
+
 class Entity{
   private:
     std::string _name;
 
   protected:
     SDL_Rect _body;
-    bool _isOutOfBounds(Cordinate pos);
+    bool _isOutOfBounds(const Cordinate pos);
+    Bounds _hasReachedBounds(const Cordinate pos);
 
   public:
     Entity(

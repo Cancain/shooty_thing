@@ -9,7 +9,22 @@ Entity::Entity(const std::string name, const int height, const int width, const 
   };
 }
 
-#include <iostream>
+Bounds Entity::_hasReachedBounds(const Cordinate pos){
+  if(!_isOutOfBounds(pos)){
+    return none;
+  }
+  if(pos.x >= WIDTH - _body.w){
+    return right;
+  }
+  if(pos.x <= 0){
+    return left;
+  }
+  if(pos.y >= HEIGHT - _body.h){
+    return bottom;
+  }
+  return top;
+}
+
 bool Entity::_isOutOfBounds(const Cordinate pos){
   unsigned int x = pos.x;
   unsigned int y = pos.y;
