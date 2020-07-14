@@ -12,8 +12,8 @@ Ball::Ball(
     const Cordinate position
     ): 
   Entity(name, height, width, position), 
-  _velocity({0, 0}),
   _currentVelocity(5.0f),
+  _velocity({0, 0}),
   _isHeld(true){}
 
 void Ball::Render(SDL_Renderer *renderer){
@@ -102,7 +102,7 @@ void Ball::_updatePosition(){
 }
 
 void Ball::_serve(){
-  _body.x = _cannon->GetPosition().x + (_cannon->GetSize().x / 4);
+  _body.x = _cannon->GetPosition().x + ((_cannon->GetSize().x / 2) - (_body.w / 2));
   _body.y = _cannon->GetPosition().y - _body.h;
 }
 

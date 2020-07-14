@@ -8,10 +8,10 @@ class Cannon;
 
 class Ball : public Entity {
   private:
+    float _currentVelocity;
     Cordinate _velocity;
     Cannon* _cannon;
     bool _isHeld;
-    float _currentVelocity;
     void _updatePosition();
     void _serve();
     bool _cannonCollision();
