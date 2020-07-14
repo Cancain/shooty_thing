@@ -1,10 +1,16 @@
 #include "Game.h"
 #include "Constants.h"
 
+
+/*
+ * Globals
+ */
 SDL_Renderer* Game::Renderer;
 
-Game::Game():_isRunning(false){};
 
+/*
+ * Constructors
+ */
 bool Game::IsRunning() const{
   return _isRunning;
 }
@@ -25,6 +31,23 @@ SDL_Window* createWindow(const int width, const int height){
   return window;
 }
 
+
+/*
+ * Deconstructor
+ */
+Game::~Game(){
+  delete _cannon;
+  delete _ball;
+  SDL_DestroyRenderer(Renderer);
+  SDL_DestroyWindow(_window);
+  SDL_Quit();
+}
+Game::Game():_isRunning(false){};
+
+
+/*
+ * Methods and functions
+ */
 SDL_Renderer* createRenderer(SDL_Window* window){
   SDL_Renderer* renderer = SDL_CreateRenderer(
       window,
@@ -62,7 +85,6 @@ void Game::_waitForTargetFramerate(){
   }
 }
 
-#include <iostream>
 void Game::ProcessInput(){
   SDL_Event event;
   SDL_PollEvent(&event);
@@ -97,10 +119,3 @@ void Game::Render(){
   SDL_RenderPresent(Renderer);
 }
 
-Game::~Game(){
-  delete _cannon;
-  delete _ball;
-  SDL_DestroyRenderer(Renderer);
-  SDL_DestroyWindow(_window);
-  SDL_Quit();
-}

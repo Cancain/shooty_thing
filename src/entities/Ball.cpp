@@ -1,6 +1,10 @@
 #include "Ball.h"
 #include <math.h>
 
+
+/*
+ * Constructors
+ */
 Ball::Ball(
     std::string name, 
     const int height,
@@ -17,10 +21,34 @@ void Ball::Render(SDL_Renderer *renderer){
   SDL_RenderFillRect(renderer, &_body);
 }
 
+
+/*
+ * Getters and setters
+ */
 Cordinate Ball::GetPosition()const {
   return {_body.x, _body.y};
 }
 
+void Ball::SetCannon(Cannon* cannon){
+  _cannon = cannon;
+}
+
+void Ball::SetIsHeld(bool isHeld){
+  _isHeld = isHeld;
+}
+
+bool Ball::GetIsHeld()const {
+  return _isHeld;
+}
+
+float Ball::GetCurrentVelocity()const {
+  return _currentVelocity;
+}
+
+
+/*
+ * Methods and functions
+ */
 float reverse(const float num){
   if(num == 0){
     return num;
@@ -86,18 +114,3 @@ void Ball::Update(){
   }
 }
 
-void Ball::SetCannon(Cannon* cannon){
-  _cannon = cannon;
-}
-
-void Ball::SetIsHeld(bool isHeld){
-  _isHeld = isHeld;
-}
-
-bool Ball::GetIsHeld()const {
-  return _isHeld;
-}
-
-float Ball::GetCurrentVelocity()const {
-  return _currentVelocity;
-}

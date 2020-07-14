@@ -1,5 +1,9 @@
 #include "Entity.h"
 
+
+/*
+ * Constructors
+ */
 Entity::Entity(const std::string name, const int height, const int width, const Cordinate position): _name(name){
   _body = {
     position.x,
@@ -9,6 +13,21 @@ Entity::Entity(const std::string name, const int height, const int width, const 
   };
 }
 
+
+/*
+ * Getters and setters
+ */
+Cordinate Entity::GetPosition() const {
+  return {
+    _body.x,
+    _body.y
+  };
+}
+
+
+/*
+ * Methods and functions
+ */
 Bounds Entity::_hasReachedBounds(const Cordinate pos){
   unsigned int x = pos.x;
   unsigned int y = pos.y;
@@ -40,9 +59,3 @@ void Entity::Render(SDL_Renderer* renderer){
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-Cordinate Entity::GetPosition() const {
-  return {
-    _body.x,
-    _body.y
-  };
-}

@@ -1,5 +1,9 @@
 #include "Cannon.h"
 
+
+/*
+ * Constructors
+ */
 Cannon::Cannon(
         const std::string name,
         const int height,
@@ -10,37 +14,10 @@ Cannon::Cannon(
   _velocity(5)
   {};
 
-void Cannon::HandleInput(const Uint8* keyState) {
-  Cordinate newPosition = {
-    _body.x,
-    _body.y
-  };
 
-  if(keyState[SDL_SCANCODE_RIGHT]){
-    newPosition.x += _velocity;
-    _body.x = _isOutOfBounds(newPosition) ? 
-      WIDTH - _body.w : 
-      newPosition.x;
-  }
-
-  if(keyState[SDL_SCANCODE_LEFT]){
-    newPosition.x -= _velocity;
-    _body.x = _isOutOfBounds(newPosition) ? 
-      0 : 
-      newPosition.x;
-  }
-}
-
-
-void Cannon::Render(SDL_Renderer* renderer){
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-  SDL_RenderFillRect(renderer, &_body);
-}
-
-void Cannon::Update(){
-
-}
-
+/*
+ * Getters and setters
+ */
 void Cannon::SetVelocity(const float velocity){
   _velocity = velocity;
 }
@@ -64,3 +41,38 @@ bool Cannon::GetHoldsBall(){
 Cordinate Cannon::GetSize(){
   return {_body.w, _body.h};
 }
+
+
+/*
+ * Methods and functions
+ */
+void Cannon::HandleInput(const Uint8* keyState) {
+  Cordinate newPosition = {
+    _body.x,
+    _body.y
+  };
+
+  if(keyState[SDL_SCANCODE_RIGHT]){
+    newPosition.x += _velocity;
+    _body.x = _isOutOfBounds(newPosition) ? 
+      WIDTH - _body.w : 
+      newPosition.x;
+  }
+
+  if(keyState[SDL_SCANCODE_LEFT]){
+    newPosition.x -= _velocity;
+    _body.x = _isOutOfBounds(newPosition) ? 
+      0 : 
+      newPosition.x;
+  }
+}
+
+void Cannon::Render(SDL_Renderer* renderer){
+  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+  SDL_RenderFillRect(renderer, &_body);
+}
+
+void Cannon::Update(){
+
+}
+

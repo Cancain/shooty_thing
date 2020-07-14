@@ -28,16 +28,16 @@ class Ball : public Entity {
     );
     Ball(Cannon* cannon);
     float GetVelocity() const;
-    void SetVelocity(const float velocity);
-    void Render(SDL_Renderer* renderer);
-    void Update();
-    void HandleInput(const Uint8* keyState);
     void SetCannon(Cannon* cannon);
     void SetIsHeld(bool isHeld);
     bool GetIsHeld() const;
     Cordinate GetPosition() const;
     void SetCurrentVelocity(const float velocity);
     float GetCurrentVelocity()const ;
+    void SetVelocity(const float velocity);
+    void Render(SDL_Renderer* renderer);
+    void Update();
+    void HandleInput(const Uint8* keyState);
 };
 
 #endif
