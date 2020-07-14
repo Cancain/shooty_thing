@@ -67,6 +67,7 @@ void Ball::HandleInput(const Uint8* keyCode){
 }
 
 bool Ball::_cannonCollision(){
+
   Cordinate pos = GetPosition();
   const Cordinate cannonPos = _cannon->GetPosition();
   const int cannonRight = cannonPos.x + _cannon->GetSize().x;
@@ -103,7 +104,8 @@ void Ball::_updatePosition(){
 }
 
 void Ball::_serve(){
-  _body.x = _cannon->GetPosition().x + ((_cannon->GetSize().x / 2) - (_body.w / 2));
+  _body.x = _cannon->GetPosition().x + 
+    ((_cannon->GetSize().x / 2) - (_body.w / 2));
   _body.y = _cannon->GetPosition().y - _body.h;
 }
 
