@@ -7,23 +7,23 @@ Cannon::Cannon(
         const Cordinate position
     ): 
   Entity(name, height, width, position), 
-  _velocity(DEFAULT_CANNON_VELOCITY)
+  _velocity(5)
   {};
 
-void Cannon::HandleInput(const SDL_Keycode key) {
+void Cannon::HandleInput(const Uint8* keyState) {
   Cordinate newPosition = {
     _body.x,
     _body.y
   };
 
-  if(key == SDLK_RIGHT){
+  if(keyState[SDL_SCANCODE_RIGHT]){
     newPosition.x += _velocity;
     _body.x = _isOutOfBounds(newPosition) ? 
       WIDTH - _body.w : 
       newPosition.x;
   }
 
-  if(key == SDLK_LEFT){
+  if(keyState[SDL_SCANCODE_LEFT]){
     newPosition.x -= _velocity;
     _body.x = _isOutOfBounds(newPosition) ? 
       0 : 

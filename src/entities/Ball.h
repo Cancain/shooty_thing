@@ -31,7 +31,7 @@ class Ball : public Entity {
     void SetVelocity(const float velocity);
     void Render(SDL_Renderer* renderer);
     void Update();
-    void HandleInput(const SDL_Keycode key);
+    void HandleInput(const Uint8* keyState);
     void SetCannon(Cannon* cannon);
     void SetIsHeld(bool isHeld);
     bool GetIsHeld() const;

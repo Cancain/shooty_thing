@@ -31,8 +31,8 @@ float reverse(const float num){
   }
 }
 
-void Ball::HandleInput(const SDL_Keycode key){
-   if(key == SDLK_SPACE){
+void Ball::HandleInput(const Uint8* keyCode){
+   if(keyCode[SDL_SCANCODE_SPACE]){
      _velocity.y = -5;
      _isHeld = false;
    }

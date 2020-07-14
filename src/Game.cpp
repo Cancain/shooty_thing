@@ -62,19 +62,18 @@ void Game::_waitForTargetFramerate(){
   }
 }
 
+#include <iostream>
 void Game::ProcessInput(){
   SDL_Event event;
   SDL_PollEvent(&event);
+  const Uint8* keyState = SDL_GetKeyboardState(NULL);
 
   if(event.type == SDL_QUIT){
     _isRunning = false;
   }
 
-  const SDL_Keycode key = event.key.keysym.sym;
-  if(key){
-    _cannon->HandleInput(key);
-    _ball->HandleInput(key);
-  } 
+  _cannon->HandleInput(keyState);
+  _ball->HandleInput(keyState);
 }
 
 void Game::_updateDeltaTime(){

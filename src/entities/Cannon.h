@@ -22,7 +22,7 @@ class Cannon : public Entity {
         WIDTH / 2 - DEFAULT_CANNON_WIDTH,
         (HEIGHT - DEFAULT_CANNON_HEIGHT) - 10
         });
-    void HandleInput(const SDL_Keycode key);
+    void HandleInput(const Uint8* keyState);
     void Render(SDL_Renderer* renderer);
     void Update();
     void SetVelocity(const float velocity);
