@@ -40,11 +40,17 @@ void Ball::HandleInput(const SDL_Keycode key){
 
 bool Ball::_cannonCollision(){
   Cordinate pos = GetPosition();
+  const Cordinate cannonPos = _cannon->GetPosition();
+  const int cannonRight = cannonPos.x + _cannon->GetSize().x;
 
-  if(pos.y >= _cannon->GetPosition().y - (_cannon->GetSize().y / 4)){
+  if(
+    pos.y >= cannonPos.y - (_cannon->GetSize().y / 4) && 
+    pos.x >= cannonPos.x && pos.x <= cannonRight
+    ){
     _velocity.y = -_currentVelocity;
     return true;
   }
+
   return false;
 }
 
