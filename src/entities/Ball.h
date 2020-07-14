@@ -11,6 +11,7 @@ class Ball : public Entity {
     Cordinate _velocity;
     Cannon* _cannon;
     bool _isHeld;
+    float _currentVelocity;
     void _updatePosition();
     void _serve();
     bool _cannonCollision();
@@ -33,9 +34,10 @@ class Ball : public Entity {
     void HandleInput(const SDL_Keycode key);
     void SetCannon(Cannon* cannon);
     void SetIsHeld(bool isHeld);
-    bool GetIsHeld();
-    Cordinate GetPosition();
-    
+    bool GetIsHeld() const;
+    Cordinate GetPosition() const;
+    void SetCurrentVelocity(const float velocity);
+    float GetCurrentVelocity()const ;
 };
 
 #endif

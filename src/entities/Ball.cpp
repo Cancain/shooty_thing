@@ -9,6 +9,7 @@ Ball::Ball(
     ): 
   Entity(name, height, width, position), 
   _velocity({0, 0}),
+  _currentVelocity(5.0f),
   _isHeld(true){}
 
 void Ball::Render(SDL_Renderer *renderer){
@@ -16,7 +17,7 @@ void Ball::Render(SDL_Renderer *renderer){
   SDL_RenderFillRect(renderer, &_body);
 }
 
-Cordinate Ball::GetPosition(){
+Cordinate Ball::GetPosition()const {
   return {_body.x, _body.y};
 }
 
@@ -41,7 +42,7 @@ bool Ball::_cannonCollision(){
   Cordinate pos = GetPosition();
 
   if(pos.y >= _cannon->GetPosition().y - (_cannon->GetSize().y / 4)){
-    _velocity.y = -5;
+    _velocity.y = -_currentVelocity;
     return true;
   }
   return false;
@@ -82,9 +83,15 @@ void Ball::Update(){
 void Ball::SetCannon(Cannon* cannon){
   _cannon = cannon;
 }
+
 void Ball::SetIsHeld(bool isHeld){
   _isHeld = isHeld;
 }
-bool Ball::GetIsHeld(){
+
+bool Ball::GetIsHeld()const {
   return _isHeld;
+}
+
+float Ball::GetCurrentVelocity()const {
+  return _currentVelocity;
 }
