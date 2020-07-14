@@ -73,7 +73,8 @@ bool Ball::_cannonCollision(){
 
   if(
     pos.y >= cannonPos.y - (_cannon->GetSize().y / 4) && 
-    pos.x >= cannonPos.x && pos.x <= cannonRight
+    pos.x >= cannonPos.x - (_body.w / 2) && 
+    pos.x <= cannonRight + (_body.w / 2)
     ){
     _velocity.y = -_currentVelocity;
     return true;
